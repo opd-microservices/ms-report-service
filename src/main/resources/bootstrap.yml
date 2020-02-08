@@ -1,0 +1,45 @@
+spring:
+  profiles: 
+    active: default
+  application:
+    name: Report
+  cloud:
+    config:
+      uri: http://localhost:8001
+      
+server:
+  port: 8020
+  servlet:
+    contextPath: /Report      
+
+eureka:
+  instance:
+    prefer-ip-address: false
+  #client:
+    #serviceUrl:
+      #defaultZone: http://localhost:8010/eureka/
+      #fetchRegistry: true
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  hystrix:
+    enabled: true
+    
+logging:
+  level:
+    com:
+      example:
+        demo:
+          dao:
+            ClientClient: DEBUG
+            CouponClient: DEBUG
+            DealClient: DEBUG
+            ParAmountClient: DEBUG
+            TransactionRoleClient: DEBUG
+            TransactionTypeClient: DEBUG   
